@@ -32,5 +32,4 @@ const executeTestCase2 = () => {
 }
 
 trackPerformance(executeTestCase1, 'FOR IN')
-
 trackPerformance(executeTestCase2, 'FOR OF Object.keys')
