@@ -1,4 +1,4 @@
-import { trackPerformance } from './performanceWrapper.mjs'
+import { trackAveragePerformance } from './performanceWrapper.mjs'
 
 const propsNumber = 1000 * 1000 * 10
 
@@ -44,7 +44,19 @@ const executeTestCase4 = () => {
   }
 }
 
-trackPerformance(executeTestCase1, 'FOR')
-trackPerformance(executeTestCase2, 'ForEach')
-trackPerformance(executeTestCase3, 'FOR OF')
-trackPerformance(executeTestCase4, 'FOR In')
+const executeTestCase5 = () => {
+  const cache = arrayTest.map(e => e)
+}
+
+const cases = {
+  'FOR': executeTestCase1, 
+  'ForEach': executeTestCase2, 
+  'FOR OF': executeTestCase3, 
+  'FOR In': executeTestCase4, 
+  'Map': executeTestCase5, 
+}
+
+Object.entries(cases).forEach(([n, c]) => {
+  console.log(n)
+  trackAveragePerformance(c, n, 'heapUsed', 1)
+})
