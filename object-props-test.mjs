@@ -1,21 +1,7 @@
-import { trackPerformance } from './performanceWrapper.mjs'
-
-// const propsNumber = 1000 * 1000 * 1
-
-// const objectTest = {}
-
-// const filler = () => {
-//   for (let index = 0; index < propsNumber; index++) {
-//     const key = `prop${index + 1}`
-//     const value = `value${index + 1}`
-//     objectTest[key] = value
-//   }
-// }
-
-// filler()
+import { trackAveragePerformance } from './performanceWrapper.mjs'
 
 const obj = {
-  test: 'test'
+  test: 'test',
 }
 
 const executeTestCase1 = () => {
@@ -30,6 +16,6 @@ const executeTestCase3 = () => {
   return !!obj['test']
 }
 
-trackPerformance(executeTestCase1, 'hasOwnProperty', 'heapUsed')
-trackPerformance(executeTestCase2, 'keys -> includes', 'heapUsed')
-trackPerformance(executeTestCase3, '!!OBJ[KEY]', 'heapUsed')
+trackAveragePerformance(executeTestCase1, 'hasOwnProperty', 'heapUsed', 10)
+trackAveragePerformance(executeTestCase2, 'keys -> includes', 'heapUsed', 10)
+trackAveragePerformance(executeTestCase3, '!!OBJ[KEY]', 'heapUsed', 10)
