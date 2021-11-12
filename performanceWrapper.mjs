@@ -3,23 +3,24 @@
  * ! Example usage:
  *  * cli:
  *    node --expose-gc file.mjs
- * 
+ *
  *  * file.mjs:
  *    import { trackPerformance } from './performanceWrapper.mjs'
  *    const fn = () => console.log('Lets track it!')
  *    trackPerformance(fn, 'track it')
  *  * output:
+ *
  *    Lets track it!
  *    track it: 1.201ms
- *    track it heapTotal: 0mb 
+ *    track it heapTotal: 0mb
  */
 
 console.warn('Memory usage metrics are still beta \n')
 
 /**
  * Track the perf!
- * @param {Function} fn 
- * @param {string} trackerName 
+ * @param {Function} fn
+ * @param {string} trackerName
  * @param {'rss'|'heapTotal'|'heapUsed'|'external'} metric - heapTotal default
  * @returns result of fn
  */
