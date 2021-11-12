@@ -8,8 +8,8 @@
  *    import { trackPerformance } from './performanceWrapper.mjs'
  *    const fn = () => console.log('Lets track it!')
  *    trackPerformance(fn, 'track it')
+ * 
  *  * output:
- *
  *    Lets track it!
  *    track it: 1.201ms
  *    track it heapTotal: 0mb
