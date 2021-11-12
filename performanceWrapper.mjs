@@ -18,21 +18,17 @@
 import { performance } from 'perf_hooks'
 
 console.warn('Memory usage metrics are still beta \n')
+const formatMb = (memory) => Math.abs(memory / 1024 / 1024)
 
 /**
  * Track the perf!
+ * @see https://stackoverflow.com/questions/20018588/how-to-monitor-the-memory-usage-of-node-js
  * @param {Function} fn
  * @param {string} trackerName
  * @param {'rss'|'heapTotal'|'heapUsed'|'external'} metric - heapTotal default
  * @returns result of fn
  */
 export const trackPerformance = (fn, trackerName, metric = 'heapTotal') => {
-  /**
-   * @see https://stackoverflow.com/questions/20018588/how-to-monitor-the-memory-usage-of-node-js
-   * Metric can be: rss, heapTotal, heapUsed, external
-   */
-  const formatMb = (memory) => Math.abs(memory / 1024 / 1024)
-
   if (global.gc) {
     global.gc()
   } else {
