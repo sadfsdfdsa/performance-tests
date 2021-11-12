@@ -15,6 +15,8 @@
  *    track it heapTotal: 0mb
  */
 
+import { performance } from 'perf_hooks'
+
 console.warn('Memory usage metrics are still beta \n')
 
 /**
@@ -41,14 +43,16 @@ export const trackPerformance = (fn, trackerName, metric = 'heapTotal') => {
   }
 
   const startedMemory = process.memoryUsage()[metric]
-  console.time(trackerName)
+  const beginTime = performance.now()
 
   const result = fn()
 
-  console.timeEnd(trackerName)
+  const totalTime = performance.now() - beginTime
+  console.log(`${trackerName}: ${totalTime}ms`)
+
   const endMemory = process.memoryUsage()[metric] - startedMemory
   const formattedMemory = formatMb(endMemory)
   console.log(`${trackerName} ${metric}: ${formattedMemory}mb \n`)
 
-  return result
+  return [result, formattedMemory, totalTime]
 }
