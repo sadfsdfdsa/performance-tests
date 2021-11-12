@@ -58,5 +58,5 @@ const cases = {
 
 Object.entries(cases).forEach(([n, c]) => {
   console.log(n)
-  trackAveragePerformance(c, n, 'heapUsed', 1)
+  trackAveragePerformance(c, n, 'heapUsed', 10)
 })
